@@ -114,11 +114,39 @@ You're on a streak! 5 days of continuous reflections with Ravan. Keep going!
 ```
 
 ---
-With these examples, users will get a clearer understanding of how each command operates and the kind of responses they can expect from the Ravan CLI tool.
 
-Absolutely, let's organize the `reflect` command interaction seamlessly:
 
----
+### LS - List Reflections:
+
+**Command:**
+```bash
+$ ravan ls
+```
+
+```
+Reflections:
+
+1. 2023-08-23: "Feeling a mix of anxiety and excitement after the interview..."
+2. 2023-08-22: "Content day. Finished reading 'The Art of Happiness'..."
+3. 2023-08-21: "Felt overwhelmed with work tasks. Need to manage time better..."
+4. 2023-08-20: "Had a great day at the beach. Felt relaxed and at peace..."
+5. 2023-08-19: "Attended a workshop on emotional intelligence. Took away some key insights..."
+
+To dive deeper into a specific reflection, use: ravan view <reflection_number>
+```
+
+**Example to view a specific reflection:**
+
+**Command:**
+```bash
+$ ravan view 3
+```
+
+```
+2023-08-21:
+
+Felt overwhelmed with work tasks. Need to manage time better. Started the day with back-to-back meetings which left little time for actual work. In the afternoon, had to juggle multiple tasks simultaneously. I need to improve my task prioritization and maybe communicate more with my team about workload distribution.
+```
 
 ### Reflect - Extended Example:
 
