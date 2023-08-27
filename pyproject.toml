@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ravan"
+version = "0.1.0"
+description = "Ravan Reflect is a versatile CLI application designed to empower individuals on their journey of self-discovery, personal growth, and mental fitness. Combining the power of generative AI with guided reflection, Ravan Reflect offers an innovative way to engage with your thoughts, feelings, and experiences."
+authors = ["nnehdi <nnehdigh@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+typer = "^0.9.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+ruff = "^0.0.286"
+pre-commit = "^3.3.3"
+isort = "^5.12.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
