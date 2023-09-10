@@ -5,7 +5,7 @@ from ravan.helpers.singleton import SingletonMeta
 
 class StorageEngine(metaclass=SingletonMeta):
     def __init__(self, db_uri=None) -> None:
-        if db_uri:
+        if not db_uri:
             # TODO refactor this to use a config file
             sqlite_filename = "journal.ravan.sqlite"
             db_uri = f"sqlite:///{sqlite_filename}"

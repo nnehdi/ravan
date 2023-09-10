@@ -25,12 +25,12 @@ class JournalSessionStorage(metaclass=SingletonMeta):
             self._chat = chat
             return journal_session
 
-    def add_message(self, content, created_at=None):
+    def add_message(self, content, role, created_at=None):
         if not created_at:
             created_at = datetime.now()
         with self._engine.session() as session:
             message = Message(
-                content=content, role="user", chat=self._chat, created_at=created_at
+                content=content, role=role, chat=self._chat, created_at=created_at
             )
             session.add(message)
             session.commit()

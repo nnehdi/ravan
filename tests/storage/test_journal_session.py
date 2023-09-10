@@ -26,5 +26,5 @@ def test_init_journal_session_storage(memory_engine):
 def test_add_message(memory_engine):
     storage = JournalSessionStorage(memory_engine)
     journal_session = storage.init_journal_session()
-    msg = storage.add_message(journal_session.id, "test message")
+    msg = storage.add_message(journal_session.id, "usre", "test message")
     return msg.id is not None
