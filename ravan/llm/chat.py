@@ -13,8 +13,9 @@ class Chat:
         self.history = ChatMessageHistory()
         self.history.add_ai_message(self.system_prompt)
 
-    def chat(self, message):
-        self.history.add_user_message(message)
+    def chat(self, message=None):
+        if message:
+            self.history.add_user_message(message)
         response = self.llm(self.history.messages)
         self.history.add_ai_message(response.content)
         return response.content
