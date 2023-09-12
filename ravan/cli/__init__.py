@@ -3,17 +3,19 @@ from typing import Optional
 import typer
 
 from ravan import __app_name__, __version__
+from ravan.cli import reflect
 
 app = typer.Typer()
+app.add_typer(reflect.app, name="reflect")
 
 
 def _version_callback(value: bool):
     if value:
         typer.echo(f"{__app_name__} v{__version__}")
-    raise typer.Exit()
+        raise typer.Exit()
 
 
-@app.callback()
+@app.callback(invoke_without_command=True)
 def main(
     version: Optional[bool] = typer.Option(
         None,
