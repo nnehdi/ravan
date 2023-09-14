@@ -1,9 +1,9 @@
 from typer.testing import CliRunner
 
-from ravan.cli.reflect import app
+from ravan.cli.ls import app
 
 
-def test_reflect():
+def test_ls():
     runner = CliRunner()
     result = runner.invoke(app)
-    assert result.stdout is not None
+    assert result.exit_code == 0
