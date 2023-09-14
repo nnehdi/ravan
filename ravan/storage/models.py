@@ -9,7 +9,9 @@ class JournalSession(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.now, nullable=False)
     chat_id: Optional[int] = Field(default=None, foreign_key="chat.id")
 
-    chat: Optional["Chat"] = Relationship(back_populates="session")
+    chat: Optional["Chat"] = Relationship(
+        back_populates="session", sa_relationship_kwargs=dict(lazy="joined")
+    )
 
 
 class Chat(SQLModel, table=True):
@@ -19,7 +21,9 @@ class Chat(SQLModel, table=True):
     session: Optional["JournalSession"] = Relationship(
         sa_relationship_kwargs={"uselist": False}, back_populates="chat"
     )
-    messages: list["Message"] = Relationship(back_populates="chat")
+    messages: list["Message"] = Relationship(
+        back_populates="chat", sa_relationship_kwargs=dict(lazy="joined")
+    )
 
 
 class Message(SQLModel, table=True):
@@ -29,4 +33,6 @@ class Message(SQLModel, table=True):
     content: str = Field(nullable=False)
     chat_id: Optional[int] = Field(default=None, foreign_key="chat.id")
 
-    chat: Optional["Chat"] = Relationship(back_populates="messages")
+    chat: Optional["Chat"] = Relationship(
+        back_populates="messages",
+    )

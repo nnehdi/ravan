@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from sqlmodel import select
+
 from ravan.helpers.singleton import SingletonMeta
 from ravan.storage.models import Chat, JournalSession, Message
 from ravan.storage.storage_engine import StorageEngine
@@ -36,3 +38,8 @@ class JournalSessionStorage(metaclass=SingletonMeta):
             session.commit()
             session.refresh(message)
             return message
+
+    def get_all_sessions(self, limit=10, offset=0):
+        with self._engine.session() as session:
+            statement = select(JournalSession).limit(limit).offset(offset)
+            return session.exec(statement).unique().all()
