@@ -3,11 +3,12 @@ from typing import Optional
 import typer
 
 from ravan import __app_name__, __version__
-from ravan.cli import ls, reflect
+from ravan.cli import ls, reflect, view
 
 app = typer.Typer()
 app.add_typer(reflect.app, name="reflect")
 app.add_typer(ls.app, name="ls")
+app.add_typer(view.app, name="view")
 
 
 def _version_callback(value: bool):

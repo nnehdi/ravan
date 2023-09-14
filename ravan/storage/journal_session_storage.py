@@ -43,3 +43,8 @@ class JournalSessionStorage(metaclass=SingletonMeta):
         with self._engine.session() as session:
             statement = select(JournalSession).limit(limit).offset(offset)
             return session.exec(statement).unique().all()
+
+    def get_session(self, session_id):
+        with self._engine.session() as session:
+            statement = select(JournalSession).where(JournalSession.id == session_id)
+            return session.exec(statement).unique().one_or_none()
